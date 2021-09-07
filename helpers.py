@@ -1,7 +1,7 @@
 # IMPORT PACKAGES
 import cv2
 import numpy as np
-from scipy import optimize
+# from scipy import optimize
 from matplotlib import pyplot as plt
 
 # Function to get and print frame info

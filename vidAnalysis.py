@@ -2,7 +2,7 @@
 import cv2
 
 # IMPORT METHODS
-from helpers import getVideoInfo, handleData
+from helpers import handleData
 
 # METHOD
 # ------------------------------------------------------
