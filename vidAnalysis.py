@@ -1,11 +1,8 @@
 # IMPORT PACKAGES
 import cv2
-import numpy as np
-from scipy.optimize import leastsq
-from matplotlib import pyplot as plt
 
 # IMPORT METHODS
-from helpers import getVideoInfo
+from helpers import getVideoInfo, handleData
 
 # METHOD
 # ------------------------------------------------------
@@ -50,14 +47,15 @@ def vidAnalysis(vidObj):
             # Keystroke listeners
             # ==============================================================
 
-            # Press Q to quit
+            # Press Q to quit ungracefully
             if key == ord('q'):
+                calc_freqs = False
                 break
 
             # Press I to begin a calculation segment
             if key == ord('i'):
-                print('listening')
                 listening = True
+                calc_freqs = True
 
                 # manually add first item
                 time_arr.append(frame_counter)
@@ -73,8 +71,6 @@ def vidAnalysis(vidObj):
 
             # Press P to end calculation segment and video
             if key == ord('p'):
-                print('end segment')
-                calc_freqs = True
                 break
 
             # ==============================================================
@@ -84,41 +80,7 @@ def vidAnalysis(vidObj):
             print('Read error or end of video.')
             break
 
-    if calc_freqs == True:
-        # HANDLE DATA
-        vidInfo = getVideoInfo(vidObj)
-
-        # guess_mean = np.mean(input_arr)
-        # guess_std = 3*np.std(input_arr) / (2**0.5) / (2**0.5)
-        # guess_phase = 0
-        # guess_freq = 1
-        # guess_amp =1
-
-        # first_pass = guess_std*np.sin(time_arr+guess_phase) + guess_mean
-
-        # FREQUENCIES
-        FT = np.fft.fft(input_arr) / len(input_arr) # FFT with normalized amplitude
-        FT = FT[range(int(len(input_arr) / 2))]
-        values = np.arange(int(len(input_arr) / 2))
-        timePeriod = len(input_arr) / vidInfo['fps']
-        freqs = values / timePeriod
-
-        # -----------------------------------------------------------
-
-        # Plots
-        fig, (ax1, ax2) = plt.subplots(2)
-        ax1.plot(time_arr, input_arr, 'b-')
-        # ax1.plot(time_arr, first_pass, 'r-')
-        ax1.set(title = 'Time History of User Inputted Events',
-                xlabel = 'time (s)',
-                ylabel = 'recorded events')
-
-        ax2.loglog(freqs, abs(FT), 'r-')
-        ax2.set(title = 'Fourier Transform',
-                xlabel = 'freqs (hz)',
-                ylabel = 'amp')
-
-        plt.show()
+    handleData(vidObj, calc_freqs, time_arr, input_arr)
 
     # Cleanup
     vidObj.release()
