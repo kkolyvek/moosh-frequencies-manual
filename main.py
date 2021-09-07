@@ -5,9 +5,9 @@ Koppi Kolyvek - September 2021
 """
 
 # FREQUENCY CALCULATION BY KEYSTROKE
-# - press [] to begin the calculation segment
-# - press [] to log a notable event
-# - press [] to end segment and present graph
+# - press [I] to begin the calculation segment
+# - press [O] to log a notable event
+# - press [P] to end segment and present graph
 
 # -----------------------------------------------------------
 
