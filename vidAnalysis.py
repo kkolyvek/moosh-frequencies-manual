@@ -26,22 +26,11 @@ def vidAnalysis(vidObj):
     # first recorded keystroke is positive
     input_val = 1
 
-    # Initialize array of dictionaries. Each dictionary corresponds to 
-    # a frequency recording segment with the following layout:
-    # data array: [
-    #   {
-    #       'segment_number'            - an integer denoting segment i.e. 1 for first segment, 2 for second, etc...
-    #       'unfiltered_user_input'     - an array of equal length to frame count with user inputs logged with 1s and -1s, zero otherwise
-    #       'unfiltered_frame_count'    - an array of the frame number
-    #       'filtered_user_input'       - an array of just user inputted events (1s and -1s)
-    #       'filtered_time'             - an array of time (in seconds) of when user inputted event was recorded
-    # },
-    # {cont. with next segment...}
-    # ]
-    data_array = []
-    time_arr = []
-    input_arr = []
-    frame_counter = 0
+    # Initialize
+    data_array = []                 # data array of dictionaries
+    time_arr = []                   # general array to count frames
+    input_arr = []                  # general array to count user input events
+    frame_counter = 0               # frame number iterator
 
     while (True):
         ret, frame = vidObj.read()
@@ -99,13 +88,18 @@ def vidAnalysis(vidObj):
         else:
             print('Read error or end of video.')
             break
-    
-    # HANDLE DATA
-    data_array = handleData(vidObj, data_array)
+
+
+    # POST PROCESSING AND CLEANUP
+    # ==============================================
 
     # Cleanup
     vidObj.release()
     cv2.destroyAllWindows()
+    
+    # HANDLE DATA
+    data_array = handleData(vidObj, data_array)
+
 
     # DISPLAY DATA
     displayData(data_array)

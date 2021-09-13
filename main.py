@@ -1,14 +1,14 @@
 """
-MANUAL PROCESS FOR TAIL-BEAT FREQUENCY CALCULATION
+MANUAL PROCESS FOR TAIL-BEAT FREQUENCY ESTIMATION
 
 Koppi Kolyvek
 (c) Moosh Systems - September 2021
 """
 
-# FREQUENCY CALCULATION BY KEYSTROKE
-# - press [I] to begin the calculation segment
+# FREQUENCY ESTIMATION BY KEYSTROKE
+# - press [I] to begin a listener segment
 # - press [O] to log a notable event
-# - press [P] to end segment and present graph
+# - press [P] to end segment
 
 # -----------------------------------------------------------
 

@@ -107,5 +107,5 @@ def displayData(data_array):
     plt.show()
 
 def saveData(data_array):
-    pickleName = 'video_data.pickle'
-    pickle.dump(data_array, open(pickleName, 'wb'))
+    pickleName = 'video_data'
+    pickle.dump(data_array, open(pickleName + '.pickle', 'wb'))
