@@ -1,0 +1,9 @@
+# none of this
+__pycache__
+
+# no vides
+*.MOV
+*.mp4
+
+# no pickle files
+*.pickle

@@ -1,7 +1,8 @@
 """
 MANUAL PROCESS FOR TAIL-BEAT FREQUENCY CALCULATION
 
-Koppi Kolyvek - September 2021
+Koppi Kolyvek
+(c) Moosh Systems - September 2021
 """
 
 # FREQUENCY CALCULATION BY KEYSTROKE
@@ -19,7 +20,7 @@ from vidAnalysis import vidAnalysis
 
 """
 MAIN
--------------------------------------------------------------
+===============================================================
 """
 
 def main():
